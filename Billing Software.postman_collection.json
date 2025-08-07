@@ -1,0 +1,309 @@
+{
+	"info": {
+		"_postman_id": "ce078cdf-aa85-443c-84d2-259b7256145b",
+		"name": "Billing Software",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31985055",
+		"_collection_link": "https://bekaar-4890.postman.co/workspace/Bekaar-Workspace~71a990a7-8286-4b58-8291-29d7befc7e96/collection/31985055-ce078cdf-aa85-443c-84d2-259b7256145b?action=share&source=collection_link&creator=31985055"
+	},
+	"item": [
+		{
+			"name": "add category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/gupta/Downloads/watches.jpeg"
+						},
+						{
+							"key": "category",
+							"value": "{\"name\": \"watches\", \"description\": \"All types of watches\", \"bgColor\": \"#4287f5\"}",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:8081/api/v1.0/admin/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "get categories",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndXB0YXNhbWFydGg2MjJAZ21haWwuY29tIiwiZXhwIjoxNzU0MTU0MDc2LCJpYXQiOjE3NTQxMTgwNzZ9.vG-2LpAdafOVnYA8wkOgA0Z5PInkBFbOLA_pl0CUwXQ",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8081/api/v1.0/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCategory",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8081/api/v1.0/admin/categories/c0484b7a-60c8-49e5-b9e9-0d6c67266532"
+			},
+			"response": []
+		},
+		{
+			"name": "encode pasword",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/api/v1.0/encode"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"guptasamarth622@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/api/v1.0/login"
+			},
+			"response": []
+		},
+		{
+			"name": "register user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndXB0YXNhbWFydGg2MjJAZ21haWwuY29tIiwiZXhwIjoxNzU0MDY1NTQyLCJpYXQiOjE3NTQwMjk1NDJ9.4c2xrC41FwOfnkKmTPKzKL8fWEoJzyzmOnPHom43Bm0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Test User 1\",\r\n    \"email\": \"testmail1@gmail.com\",\r\n    \"role\": \"ROLE_USER\",\r\n    \"password\": \"232411222\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/api/v1.0/admin/register"
+			},
+			"response": []
+		},
+		{
+			"name": "get user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndXB0YXNhbWFydGg2MjJAZ21haWwuY29tIiwiZXhwIjoxNzU0MDY1NTQyLCJpYXQiOjE3NTQwMjk1NDJ9.4c2xrC41FwOfnkKmTPKzKL8fWEoJzyzmOnPHom43Bm0",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8081/api/v1.0/admin/users"
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndXB0YXNhbWFydGg2MjJAZ21haWwuY29tIiwiZXhwIjoxNzU0MDY1NTQyLCJpYXQiOjE3NTQwMjk1NDJ9.4c2xrC41FwOfnkKmTPKzKL8fWEoJzyzmOnPHom43Bm0",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8081/api/v1.0/admin/users/65120821-5c45-40a6-b1a9-52c427c0ec59"
+			},
+			"response": []
+		},
+		{
+			"name": "add Item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndXB0YXNhbWFydGg2MjJAZ21haWwuY29tIiwiZXhwIjoxNzU0MTU0NzQzLCJpYXQiOjE3NTQxMTg3NDN9.E1IlQiGWr-1tnoMWuYuZirldA8sHeLMdt_75C9jPBiU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "item",
+							"value": "{\n\n\"name\": \"sony headphone\",\n\"description\": \"This is best headphone in the current market.\",\n\"price\": 362.00,\n\"categoryId\": \"1dfa1f57-1b64-4427-94a0-b2d7d5c23f76\"\n\n}",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/gupta/Downloads/headphone sony.jpeg"
+						}
+					]
+				},
+				"url": "http://localhost:8081/api/v1.0/admin/items"
+			},
+			"response": []
+		},
+		{
+			"name": "read items",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndXB0YXNhbWFydGg2MjJAZ21haWwuY29tIiwiZXhwIjoxNzU0MTU0NDc2LCJpYXQiOjE3NTQxMTg0NzZ9.sagNq2g18HzqtPQBpu_NjZpH0tIBogOoHrQ8NseF6UY",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8081/api/v1.0/items"
+			},
+			"response": []
+		},
+		{
+			"name": "delete Item",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndXB0YXNhbWFydGg2MjJAZ21haWwuY29tIiwiZXhwIjoxNzU0MTU0NDc2LCJpYXQiOjE3NTQxMTg0NzZ9.sagNq2g18HzqtPQBpu_NjZpH0tIBogOoHrQ8NseF6UY",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8081/api/v1.0/admin/items/028d190f-b7e1-42a1-b906-166d10d07399"
+			},
+			"response": []
+		},
+		{
+			"name": "create Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndXB0YXNhbWFydGg2MjJAZ21haWwuY29tIiwiZXhwIjoxNzU0NDk0MDc5LCJpYXQiOjE3NTQ0NTgwNzl9.s9bhiYl3Tu3TrkMKrEjL5jMnZTsBY93tADxVQdyUOxE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerName\": \"Vimal\",\r\n    \"customerMobile\": \"8263826382\",\r\n    \"cartItems\": [\r\n        {\r\n            \"itemId\": \"7f5d5624-cdc5-4960-9634-4446a60bbab9\",\r\n            \"name\": \"Sony Headphones\",\r\n            \"price\": 4700.00,\r\n            \"quantity\": 1\r\n        }\r\n    ],\r\n    \"subTotal\": 723.00,\r\n    \"tax\": 1.90,\r\n    \"grandTotal\": 724.90,\r\n    \"paymentMethod\": \"UPI\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/api/v1.0/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "razorpay payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndXB0YXNhbWFydGg2MjJAZ21haWwuY29tIiwiZXhwIjoxNzU0NTI1NTI3LCJpYXQiOjE3NTQ0ODk1Mjd9.UQpwtZDBG000Zk-H894JDL71c7A3ekJ_9I01gddZNxE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\": 50.00,\r\n    \"currency\": \"INR\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/api/v1.0/payments/create-order"
+			},
+			"response": []
+		},
+		{
+			"name": "get orders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndXB0YXNhbWFydGg2MjJAZ21haWwuY29tIiwiZXhwIjoxNzU0NDk0MDc5LCJpYXQiOjE3NTQ0NTgwNzl9.s9bhiYl3Tu3TrkMKrEjL5jMnZTsBY93tADxVQdyUOxE",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8081/api/v1.0/orders/latest"
+			},
+			"response": []
+		},
+		{
+			"name": "delete order",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndXB0YXNhbWFydGg2MjJAZ21haWwuY29tIiwiZXhwIjoxNzU0NTg1OTk4LCJpYXQiOjE3NTQ1NDk5OTh9.OYvhFAVQHwrwUd0SBivn__cPy63fOeoP9Sz97sxf4sg",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:8081/api/v1.0/orders/ORD1754549718180"
+			},
+			"response": []
+		},
+		{
+			"name": "dashboard",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJndXB0YXNhbWFydGg2MjJAZ21haWwuY29tIiwiZXhwIjoxNzU0NjE1MTM0LCJpYXQiOjE3NTQ1NzkxMzR9.hkQh_xjJGJpU_LH0PeeAKk0IhO1UBkplh8NUauCB-P8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"guptasamarth622@gmail.com\",\r\n    \"password\": \"123456\"\r\n}"
+				},
+				"url": "http://localhost:8081/api/v1.0/dashboard"
+			},
+			"response": []
+		}
+	]
+}
