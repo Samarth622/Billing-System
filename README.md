@@ -82,7 +82,7 @@ The repository is organized into two main directories:
 3.  **Set up environment variables:**
     Create a `.env` file in the `bsclient` root directory and add your Razorpay Key ID. This is used by the frontend to initiate payments.
     ```
-    VITE_RAZORPAY_KEY_ID=your_razorpay_key_id
+    RAZORPAY_KEY_ID=your_razorpay_key_id
     ```
 
 4.  **Run the development server:**
@@ -101,5 +101,5 @@ The backend API is served under the base path `/api/v1.0`. A comprehensive colle
 -   **Orders:** `/orders`
 -   **Payments:** `/payments`
 -   **Items:** `/items`
--   **Categories:** `/categories`
--   **Admin Routes:** `/admin/**` (for managing users, items, and categories)
+-   **Categories:** `/category`
+-   **Explore:** `/explore`
