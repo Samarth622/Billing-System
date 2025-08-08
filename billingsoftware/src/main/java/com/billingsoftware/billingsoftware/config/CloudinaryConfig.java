@@ -14,9 +14,9 @@ public class CloudinaryConfig {
     public Cloudinary cloudinary() {
         Cloudinary cloud = new Cloudinary(
                 Map.of(
-                        "cloud_name", "dizvwz61v",
-                        "api_key", "478986572611589",
-                        "api_secret", "NiPjbhuA7_PdqgJQL52DEV2JdBk"
+                        "cloud_name", "CLOUD_NAME",
+                        "api_key", "API_KEY",
+                        "api_secret", "API_SECRET"
                 )
         );
         System.out.println(cloud);
