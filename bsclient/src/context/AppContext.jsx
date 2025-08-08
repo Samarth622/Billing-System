@@ -35,7 +35,7 @@ export const AppContextProvider = (props) => {
 
   const clearCart = () => {
     setCartItems([]);
-  }
+  };
 
   const removeFromCart = (itemName) => {
     setCartItems(cartItems.filter((item) => item.name !== itemName));
@@ -51,21 +51,27 @@ export const AppContextProvider = (props) => {
 
   useEffect(() => {
     const loadData = async () => {
-      if (localStorage.getItem("token") && localStorage.getItem("user")) {
-        setAuthData(
-          localStorage.getItem("token"),
-          localStorage.getItem("user")
-        );
-        const response = await fetchCategories();
-        const resp = await fetchItems();
-        if (response.status === 200) {
-          setCategories(response.data);
-          setItems(resp.data);
+      if (auth.token && auth.user) {
+        try {
+          const [categoriesResponse, itemsResponse] = await Promise.all([
+            fetchCategories(),
+            fetchItems(),
+          ]);
+
+          if (categoriesResponse.status === 200) {
+            setCategories(categoriesResponse.data);
+          }
+          if (itemsResponse.status === 200) {
+            setItems(itemsResponse.data);
+          }
+        } catch (error) {
+          console.error("Error loading data:", error);
         }
       }
     };
+
     loadData();
-  }, []);
+  }, [auth.token, auth.user]);
 
   const setAuthData = (token, user) => {
     setAuth({ token, user });
@@ -82,7 +88,7 @@ export const AppContextProvider = (props) => {
     cartItems,
     removeFromCart,
     updateQuantity,
-    clearCart
+    clearCart,
   };
 
   return (

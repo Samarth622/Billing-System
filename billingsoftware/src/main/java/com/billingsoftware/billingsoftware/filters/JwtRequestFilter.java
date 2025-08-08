@@ -2,11 +2,13 @@ package com.billingsoftware.billingsoftware.filters;
 
 import com.billingsoftware.billingsoftware.service.impl.AppUserDetailService;
 import com.billingsoftware.billingsoftware.utils.JwtUtil;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,7 +35,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         if(authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             token = authorizationHeader.substring(7);
-            email = jwtUtil.extractUsername(token);
+            try {
+                email = jwtUtil.extractUsername(token);
+            } catch (ExpiredJwtException e) {
+                response.setStatus(HttpStatus.UNAUTHORIZED.value());
+                response.setContentType("application/json");
+                response.getWriter().write("{\"error\":\"Token expired\",\"code\":\"TOKEN_EXPIRED\"}");
+                return;
+            }
+
         }
 
         if(email != null && SecurityContextHolder.getContext().getAuthentication() == null){

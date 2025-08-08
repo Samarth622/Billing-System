@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { assest } from "../../assets/assets.js";
 import "./Menubar.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../../context/AppContext.jsx";
 
 const Menubar = () => {
@@ -10,6 +10,7 @@ const Menubar = () => {
   const navigate = useNavigate();
 
   const location = useLocation();
+
 
   const handleLogout = () => {
     localStorage.removeItem("token");

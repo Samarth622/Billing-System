@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Menubar from "./components/Menubar/Menubar.jsx";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
@@ -11,11 +11,12 @@ import Login from "./pages/Login/Login.jsx";
 import OrderHistory from "./components/OrderHistory/OrderHistory.jsx";
 import { AppContext } from "./context/AppContext.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
+import setupAxiosInterceptors from "./utils/setupAxiosInterceptors.js";
 
 function App() {
   const location = useLocation();
 
-  const { auth } = useContext(AppContext);
+  const { auth, setAuthData } = useContext(AppContext);
 
   const LoginRoute = ({ element }) => {
     if (auth.token) {
@@ -23,6 +24,10 @@ function App() {
     }
     return element;
   };
+
+  useEffect(() => {  
+    setupAxiosInterceptors(setAuthData);  
+  }, [setAuthData]);
 
   const ProtectedRoute = ({ element, allowedRoles }) => {
     if (!auth.token) {
