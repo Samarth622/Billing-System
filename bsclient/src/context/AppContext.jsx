@@ -13,6 +13,7 @@ export const AppContextProvider = (props) => {
   });
 
   const [items, setItems] = useState([]);
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
 
   const [cartItems, setCartItems] = useState([]);
 
@@ -68,6 +69,7 @@ export const AppContextProvider = (props) => {
           console.error("Error loading data:", error);
         }
       }
+      setIsAuthLoading(false);
     };
 
     loadData();
@@ -82,6 +84,7 @@ export const AppContextProvider = (props) => {
     setCategories,
     auth,
     setAuthData,
+    isAuthLoading,
     items,
     setItems,
     addCart,

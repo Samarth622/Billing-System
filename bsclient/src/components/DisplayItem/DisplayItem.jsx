@@ -7,6 +7,7 @@ const DisplayItem = ({ selectedCategory }) => {
   const { items } = useContext(AppContext);
 
   const [searchText, setSearchText] = useState("");
+  
 
   const filterItems = items
     .filter((item) => {

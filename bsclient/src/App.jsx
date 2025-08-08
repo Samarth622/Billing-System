@@ -16,9 +16,12 @@ import setupAxiosInterceptors from "./utils/setupAxiosInterceptors.js";
 function App() {
   const location = useLocation();
 
-  const { auth, setAuthData } = useContext(AppContext);
+  const { auth, setAuthData, isAuthLoading } = useContext(AppContext);
 
   const LoginRoute = ({ element }) => {
+    if (isAuthLoading) {  
+      return <div>Loading...</div>; // Show loading while checking auth  
+    }
     if (auth.token) {
       return <Navigate to="/dashboard" replace />;
     }
@@ -27,9 +30,14 @@ function App() {
 
   useEffect(() => {  
     setupAxiosInterceptors(setAuthData);  
-  }, [setAuthData]);
+  }, [auth]);
 
   const ProtectedRoute = ({ element, allowedRoles }) => {
+
+    if (isAuthLoading) {  
+      return <div>Loading...</div>; // Show loading while checking auth  
+    }  
+
     if (!auth.token) {
       return <Navigate to="/login" replace />;
     }
